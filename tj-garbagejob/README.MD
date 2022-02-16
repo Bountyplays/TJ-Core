@@ -17,8 +17,37 @@ Just A Little Note That We Are Always Open To Any Additions You Want To Make, Bu
 Send Us These Additions So We Can Add Them To Our Updates With Credits To The Respective Collaborators.
 
 
+
+
+
 How To Install:
+
+1:  Before Starting tj-garbagejob You Must Add The Job First, To Do So Go Into [qb]/qb-core/shared/jobs.lua
+    And Paste The Following
+    ['garbageman'] = {
+		label = 'GarbageMan',
+		defaultDuty = false,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'Garbage Man',
+                payment = 10
+            },
+        },
+	},
+
+2: Install qb-target as this is a dependency if you want to use 'Third Eye Support"
+    Info On How To Use Third Eye Support Will Be on The "How To Use" Section Of This README.MD
+
+3: Paste tj-garbagejob In Your [qb] Folder In Resources And Ensure It To Your Server.cfg If [qb] Is Not Already Ensured  
+
+
+
 
 
 
 How To Use:
+
+1: Enable Third Eye Support
+
+To Enable Third Eye Support Go Into The config.lua And Set "Config.ToggleThirdEye = false" To "Config.ToggleThirdEye = true"
