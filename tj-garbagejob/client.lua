@@ -83,6 +83,7 @@ end)
 
 -- Toggle ThirdEye Use
 Citizen.CreateThread(function()
+    playerJob = QBCore.Functions.GetPlayerData().job
     if Target == true and playerJob.name == "garbageman" then
         exports['qb-target']:AddBoxZone("Garbage Job", vector3(-322.24, -1545.87, 31.02),1,1, {
             name = "GarbageMan",
@@ -96,6 +97,7 @@ Citizen.CreateThread(function()
                     type = "client",
                     event = "TJ-GarbageJob:client:SetOnOffDutyTarget",
                     targeticon = 'fas fa-trash-alt',
+                    icon = "fas fa-sign-in-alt",
                     label = "Clock In | Clock Out"
                 },
             },
