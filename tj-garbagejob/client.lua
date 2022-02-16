@@ -9,6 +9,7 @@ local coords = vector3(-314.14, -1524.3, 27.57)
 local Target = Config.ToggleThirdEye
 local currentStop = math.random(1, #Config.Locations)
 
+--Sets Up Blips
 local function setupClient()
     deliveryBlip = nil
     if playerJob.name == "garbageman" then
