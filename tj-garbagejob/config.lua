@@ -16,5 +16,8 @@ Config.Items = {
 
 -- Locations Of All The Trash Objectives, To Add New Locations Add The Vector4 Coords.
 Config.Locations = {
-
+    [1] = {
+        name = "test",
+        coords = vector4(0, 0, 0, 0),
+    },
 }
