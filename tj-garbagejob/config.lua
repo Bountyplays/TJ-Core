@@ -11,6 +11,9 @@ Config.ToggleReciveItems = true
 -- Set To False If You Do Not Want Players To Recive Money When Picking Up Trash
 Config.ToggleRecieveMoney = true
 
+-- Set To True If You Want To Change Clothing When Setting Yourself On-Duty
+Config.ToggleChangeClothing = false
+
 -- If ToggleReciveMoney Is Set To "True" Players Can Earn This Amount Every Stop
 -- Change How Much Money A Player Can Make Per Stop
 Config.MoneyPerStop = 110
