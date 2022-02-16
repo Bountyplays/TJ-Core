@@ -4,7 +4,7 @@ local player = QBCore.Functions.GetPlayerData()
 local onduty = player.job.onduty
 local isSpawned = false
 local coords = vector3(-314.14, -1524.3, 27.57)
-local Target = true
+local Target = Config.ToggleThirdEye
 
 Citizen.CreateThread(function()
     
@@ -74,12 +74,11 @@ end)
 
 -- Toggle ThirdEye Use
 Citizen.CreateThread(function()
-    Target = Config.ToggleThirdEye
     if Target == true then
         exports['qb-target']:AddBoxZone("Garbage Job", vector3(-322.24, -1545.87, 31.02),1,1, {
             name = "GarbageMan",
             heading = 88.17,
-            debugPoly = true,
+            debugPoly = false,
             minZ = 30,
             maxZ = 35,
             }, {
@@ -93,29 +92,37 @@ Citizen.CreateThread(function()
             },
             distance = 3.0
         })
-    else
-        local ped = PlayerPedId()
-        local pos = GetEntityCoords(ped)
-        local garbageDist = #(pos - vector3(-322.25, -1545.87, 31.02))
-        if garbageDist < 1 then
-            inRange = true
-            if garbageDist < 1 and onduty == false then
-                ShowHelpNotification("Press [E] To Go On Duty")
-                if IsControlJustPressed(0, 38) then
-                    onduty = true
-                    TriggerServerEvent("QBCore:ToggleDuty")
-                end 
-            elseif garbageDist < 1 and onduty == true then
-                ShowHelpNotification("Press [E] To Go Off Duty")
-                if IsControlJustPressed(0, 38) then
-                    onduty = false
-                    TriggerServerEvent("QBCore:ToggleDuty")
+    end
+end)
+
+Citizen.CreateThread(function()
+
+    -- Set On/Off Duty
+    while true do
+        Wait(0)
+        if Target == false then
+            local ped = PlayerPedId()
+            local pos = GetEntityCoords(ped)
+            local garbageDist = #(pos - vector3(-322.25, -1545.87, 31.02))
+            if garbageDist < 1 then
+                inRange = true
+                if garbageDist < 1 and onduty == false then
+                    ShowHelpNotification("Press [E] To Go On Duty")
+                    if IsControlJustPressed(0, 38) then
+                        onduty = true
+                        TriggerServerEvent("QBCore:ToggleDuty")
+                    end 
+                elseif garbageDist < 1 and onduty == true then
+                    ShowHelpNotification("Press [E] To Go Off Duty")
+                    if IsControlJustPressed(0, 38) then
+                        onduty = false
+                        TriggerServerEvent("QBCore:ToggleDuty")
+                    end
                 end
             end
         end
     end
 end)
-
 
 
 -- Handle On & Off Duty Using Third Eye Support
@@ -129,16 +136,6 @@ AddEventHandler('TJ-GarbageJob:client:SetOnOffDutyTarget', function()
         TriggerServerEvent("QBCore:ToggleDuty")
     end
 end)
-
-
-
-
-
-
-
-
-
-
 
 -- Shows Help Notification
 function ShowHelpNotification(text)
