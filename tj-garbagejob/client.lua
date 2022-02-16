@@ -2,10 +2,12 @@
 QBCore = exports['qb-core']:GetCoreObject()
 local playerJob = nil
 local garbageBlip = nil
+local deliveryBlip = nil
 local onduty = false
 local isSpawned = false
 local coords = vector3(-314.14, -1524.3, 27.57)
 local Target = Config.ToggleThirdEye
+local currentStop = math.random(1, #Config.Locations)
 
 local function setupClient()
     deliveryBlip = nil
@@ -15,7 +17,7 @@ local function setupClient()
         SetBlipDisplay(garbageBlip, 4)
         SetBlipScale(garbageBlip, 1.0)
         SetBlipAsShortRange(garbageBlip, true)
-        SetBlipColour(garbageBlip, 39)
+        SetBlipColour(garbageBlip, 47)
         BeginTextCommandSetBlipName("STRING")
         AddTextComponentSubstringPlayerName("Garbage HQ")
         EndTextCommandSetBlipName(garbageBlip)
@@ -133,6 +135,26 @@ Citizen.CreateThread(function()
             end
         end
     end
+end)
+
+RegisterNetEvent('tj-garbagejob:client:startroute')
+AddEventHandler('tj-garbagejob:client:startroute', function() 
+    local ped = PlayerPedId()
+    local pos = GetEntityCoords(ped)
+    local CurrentLocation = Config.Locations[currentStop]
+    if deliveryBlip ~= nil then
+        RemoveBlip(deliveryBlip)
+    end
+    deliveryBlip = AddBlipForCoord(CurrentLocation.coords.x, CurrentLocation.coords.y, CurrentLocation.coords.z)
+    SetBlipSprite(deliveryBlip, 1)
+    SetBlipDisplay(deliveryBlip, 2)
+    SetBlipScale(deliveryBlip, 1.0)
+    SetBlipAsShortRange(deliveryBlip, false)
+    SetBlipColour(deliveryBlip, 47)
+    BeginTextCommandSetBlipName("STRING")
+    AddTextComponentSubstringPlayerName(Config.Locations[currentStop].name)
+    EndTextCommandSetBlipName(deliveryBlip)
+    SetBlipRoute(deliveryBlip, true)
 end)
 
 
