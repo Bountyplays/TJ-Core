@@ -6,28 +6,26 @@ local isSpawned = false
 local coords = vector3(-314.14, -1524.3, 27.57)
 local Target = Config.ToggleThirdEye
 
-Citizen.CreateThread(function()
-    
-
-      -- Create Job Blip (Needs Update!)
-      local blip = AddBlipForCoord(-321.49, -1545.82, 31.02)
-      SetBlipSprite(blip, 318)
-      SetBlipDisplay(blip, 4)
-      SetBlipScale(blip, 1)
-      SetBlipColour(blip, 47)
-      SetBlipAsShortRange(blip, true)
-      BeginTextCommandSetBlipName("STRING")
-      AddTextComponentString("Garbage Job")
-      EndTextCommandSetBlipName(blip)
-end)
-
-
 local blips = {
     -- Example {title="", colour=, id=, x=, y=, z=},
 
      {title="Garbage Job", colour=47, id=318, x = -321.49, y = -1545.82, z = 31.02},
      --{title="Marlowe Vineyard", colour=3, id=499, x = -1873.58, y = 2023.76, z = 138.83}
   }
+
+Citizen.CreateThread(function()
+      for _, info in pairs(blips) do
+        info.blip = AddBlipForCoord(info.x, info.y, info.z)
+        SetBlipSprite(info.blip, info.id)
+        SetBlipDisplay(info.blip, 4)
+        SetBlipScale(info.blip, 0.9)
+        SetBlipColour(info.blip, info.colour)
+        SetBlipAsShortRange(info.blip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString(info.title)
+        EndTextCommandSetBlipName(info.blip)
+      end
+end)
    
 
 Citizen.CreateThread(function()
