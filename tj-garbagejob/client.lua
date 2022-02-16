@@ -139,6 +139,7 @@ end)
 
 RegisterNetEvent('tj-garbagejob:client:startroute')
 AddEventHandler('tj-garbagejob:client:startroute', function() 
+    --This Starts the Route of The Job From The Radial Menu
     local ped = PlayerPedId()
     local pos = GetEntityCoords(ped)
     local CurrentLocation = Config.Locations[currentStop]
