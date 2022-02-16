@@ -126,9 +126,6 @@ function ShowHelpNotification(text)
     DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 end
 
-<<<<<<< HEAD
 --Test
-=======
 
 --This Is A Change
->>>>>>> b22c76dbc72a3ffeb13dcc670384eeed6b85e2fb
