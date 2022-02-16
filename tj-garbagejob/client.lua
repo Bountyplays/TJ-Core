@@ -125,7 +125,3 @@ function ShowHelpNotification(text)
     AddTextComponentString(text)
     DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 end
-
---Test
-
---This Is A Change
