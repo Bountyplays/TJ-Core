@@ -1,29 +1,32 @@
-Made By: TJ Developments (TKiljoy & KingJamesTheDev)
+# Made By: TJ Developments (TKiljoy & KingJamesTheDev)*
 
 
-THANK YOU!
-Thanks For Downloading Our Script! This Script Is A ReCoded Version Of The QBCore Garbage Job With Extended Features.
-Please Read Below This Message To See Instructions And Guidlines To Our Resources.
+# THANK YOU!
+**Thanks For Downloading Our Script! This Script Is A ReCoded Version Of The QBCore Garbage Job With Extended Features.**
+**Please Read Below This Message To See Instructions And Guidlines To Our Resources.**
 
 
-GuidLines:
-You May NOT Repost This Script On ANY platform Without Our Written Consent To Do So.
-You May NOT Take This Script And Say The Contents Are Yours And You Made It.
-You May Make Your Own Addtions To This Script But You May NOT Repost This Script With Your Addtions To ANY Platform.
+# GuidLines:
+**You May NOT Repost This Script On ANY platform Without Our Written Consent To Do So.**
+**You May NOT Take This Script And Say The Contents Are Yours And You Made It.**
+**You May Make Your Own Addtions To This Script But You May NOT Repost This Script With Your Addtions To ANY Platform.**
 
 
-Notes:
-Just A Little Note That We Are Always Open To Any Additions You Want To Make, But For Them To Be Added Publicly You May 
-Send Us These Additions So We Can Add Them To Our Updates With Credits To The Respective Collaborators.
+# Notes:
+* **Just A Little Note That We Are Always Open To Any Additions You Want To Make, But For Them To Be Added Publicly You May** 
+* **Send Us These Additions So We Can Add Them To Our Updates With Credits To The Respective Collaborators.**
+
+
+# Dependencies
+* [QBCore-Framework] https://github.com/qbcore-framework
+* [QB-Target] https://github.com/BerkieBb/qb-target
 
 
 
+# How To Install:
 
-
-How To Install:
-
-1:  Before Starting tj-garbagejob You Must Add The Job First, To Do So Go Into [qb]/qb-core/shared/jobs.lua
-    And Paste The Following
+**1:  Before Starting tj-garbagejob You Must Add The Job First, To Do So Go Into [qb]/qb-core/shared/jobs.lua**
+    **And Paste The Following**
     ['garbageman'] = {
 		label = 'GarbageMan',
 		defaultDuty = false,
@@ -36,18 +39,18 @@ How To Install:
         },
 	},
 
-2: Install qb-target as this is a dependency if you want to use 'Third Eye Support"
-    Info On How To Use Third Eye Support Will Be on The "How To Use" Section Of This README.MD
+**2: Install qb-target as this is a dependency if you want to use 'Third Eye Support"**
+    **Info On How To Use Third Eye Support Will Be on The "How To Use" Section Of This README.MD**
 
-3: Paste tj-garbagejob In Your [qb] Folder In Resources And Ensure It To Your Server.cfg If [qb] Is Not Already Ensured  
-
-
+**3: Paste tj-garbagejob In Your [qb] Folder In Resources And Ensure It To Your Server.cfg If [qb] Is Not Already Ensured** 
 
 
 
 
-How To Use:
 
-1: Enable Third Eye Support
 
-To Enable Third Eye Support Go Into The config.lua And Set "Config.ToggleThirdEye = false" To "Config.ToggleThirdEye = true"
+# How To Use:
+
+**1: Enable Third Eye Support**
+
+**To Enable Third Eye Support Go Into The config.lua And Set "Config.ToggleThirdEye = false" To "Config.ToggleThirdEye = true"**
