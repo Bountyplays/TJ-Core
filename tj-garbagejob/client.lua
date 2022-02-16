@@ -74,13 +74,14 @@ end)
 
 -- Toggle ThirdEye Use
 Citizen.CreateThread(function()
+    Target = Config.ToggleThirdEye
     if Target == true then
         exports['qb-target']:AddBoxZone("Garbage Job", vector3(-322.24, -1545.87, 31.02),1,1, {
             name = "GarbageMan",
             heading = 88.17,
-            debugPoly = false,
+            debugPoly = true,
             minZ = 30,
-            maxZ = 32,
+            maxZ = 35,
             }, {
             options = {
                 {
@@ -92,6 +93,26 @@ Citizen.CreateThread(function()
             },
             distance = 3.0
         })
+    else
+        local ped = PlayerPedId()
+        local pos = GetEntityCoords(ped)
+        local garbageDist = #(pos - vector3(-322.25, -1545.87, 31.02))
+        if garbageDist < 1 then
+            inRange = true
+            if garbageDist < 1 and onduty == false then
+                ShowHelpNotification("Press [E] To Go On Duty")
+                if IsControlJustPressed(0, 38) then
+                    onduty = true
+                    TriggerServerEvent("QBCore:ToggleDuty")
+                end 
+            elseif garbageDist < 1 and onduty == true then
+                ShowHelpNotification("Press [E] To Go Off Duty")
+                if IsControlJustPressed(0, 38) then
+                    onduty = false
+                    TriggerServerEvent("QBCore:ToggleDuty")
+                end
+            end
+        end
     end
 end)
 
