@@ -39,10 +39,22 @@
         },
 	},
 
-**2: Install qb-target as this is a dependency if you want to use 'Third Eye Support"**
+**2: For tj-garbagejob to work you must also add this to your [qb]/qb-radialmenu/config.lua under Config.JobInteractions**
+    ["garbageman"] = {
+        {
+            id = 'startroute',
+            title = 'Start Route',
+            icon = 'car',
+            type = 'client',
+            event = 'tj-garbagejob:client:startroute',
+            shouldClose = true
+        }
+    },
+
+**3: Install qb-target as this is a dependency if you want to use 'Third Eye Support"**
     **Info On How To Use Third Eye Support Will Be on The "How To Use" Section Of This README.MD**
 
-**3: Paste tj-garbagejob In Your [qb] Folder In Resources And Ensure It To Your Server.cfg If [qb] Is Not Already Ensured** 
+**4: Paste tj-garbagejob In Your [qb] Folder In Resources And Ensure It To Your Server.cfg If [qb] Is Not Already Ensured** 
 
 
 
