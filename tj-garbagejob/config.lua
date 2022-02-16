@@ -3,7 +3,7 @@
 Config = {}
 
 -- Set To True If You Want To Toggle QBTarget (Third Eye Support)
-Config.ToggleThirdEye = false
+Config.ToggleThirdEye = true
 
 -- Set To False If You Do Not Want Players To Recive Items When Picking Up Trash
 Config.ToggleReciveItems = true
