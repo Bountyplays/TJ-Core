@@ -1,30 +1,41 @@
 -- Script Variables
 QBCore = exports['qb-core']:GetCoreObject()
-local player = QBCore.Functions.GetPlayerData()
-local onduty = player.job.onduty
+local playerJob = nil
+local garbageBlip = nil
+local onduty = false
 local isSpawned = false
 local coords = vector3(-314.14, -1524.3, 27.57)
 local Target = Config.ToggleThirdEye
 
-local blips = {
-    -- Example {title="", colour=, id=, x=, y=, z=},
-
-     {title="Garbage Job", colour=47, id=318, x = -321.49, y = -1545.82, z = 31.02},
-     --{title="Marlowe Vineyard", colour=3, id=499, x = -1873.58, y = 2023.76, z = 138.83}
-  }
-
-Citizen.CreateThread(function()
-      for _, info in pairs(blips) do
-        info.blip = AddBlipForCoord(info.x, info.y, info.z)
-        SetBlipSprite(info.blip, info.id)
-        SetBlipDisplay(info.blip, 4)
-        SetBlipScale(info.blip, 0.9)
-        SetBlipColour(info.blip, info.colour)
-        SetBlipAsShortRange(info.blip, true)
+local function setupClient()
+    deliveryBlip = nil
+    if playerJob.name == "garbageman" then
+        garbageBlip = AddBlipForCoord(vector3(-314.14, -1524.3, 27.57))
+        SetBlipSprite(garbageBlip, 318)
+        SetBlipDisplay(garbageBlip, 4)
+        SetBlipScale(garbageBlip, 1.0)
+        SetBlipAsShortRange(garbageBlip, true)
+        SetBlipColour(garbageBlip, 39)
         BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString(info.title)
-        EndTextCommandSetBlipName(info.blip)
-      end
+        AddTextComponentSubstringPlayerName("Garbage HQ")
+        EndTextCommandSetBlipName(garbageBlip)
+    end
+end
+
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+    playerJob = QBCore.Functions.GetPlayerData().job
+    onduty = playerJob.onduty
+    setupClient()
+end)
+
+RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
+    playerJob = JobInfo
+    if playerJob.name == "garbage" then
+        if garbageBlip ~= nil then
+            RemoveBlip(garbageBlip)
+        end
+    end
+    setupClient()
 end)
    
 
@@ -35,7 +46,7 @@ Citizen.CreateThread(function()
         local ped = PlayerPedId()
         local pos = GetEntityCoords(ped)
         local markDist = #(pos - vector3(-327.96, -1523.91, 27.54))
-        if markDist < 27 and onduty == true then
+        if markDist < 27 and onduty == true and playerJob.name == "garbageman" then
             -- Truck Icon
             DrawMarker(39, -327.96, -1523.91, 27.54, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 200, 0, 0, 222, false, false, false, true, false, false, false)
             -- Circle Icon
@@ -72,7 +83,7 @@ end)
 
 -- Toggle ThirdEye Use
 Citizen.CreateThread(function()
-    if Target == true then
+    if Target == true and playerJob.name == "garbageman" then
         exports['qb-target']:AddBoxZone("Garbage Job", vector3(-322.24, -1545.87, 31.02),1,1, {
             name = "GarbageMan",
             heading = 88.17,
@@ -94,11 +105,11 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-
+    playerJob = QBCore.Functions.GetPlayerData().job
     -- Set On/Off Duty
     while true do
         Wait(0)
-        if Target == false then
+        if Target == false and playerJob.name == "garbageman" then
             local ped = PlayerPedId()
             local pos = GetEntityCoords(ped)
             local garbageDist = #(pos - vector3(-322.25, -1545.87, 31.02))
