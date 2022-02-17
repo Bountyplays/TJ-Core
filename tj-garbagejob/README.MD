@@ -40,6 +40,7 @@
 	},
 
 **2: For tj-garbagejob to work you must also add this to your [qb]/qb-radialmenu/config.lua under Config.JobInteractions**
+    ```lua
     ["garbageman"] = {
         {
             id = 'startroute',
@@ -50,6 +51,7 @@
             shouldClose = true
         }
     },
+    ```
 
 **3: Install qb-target as this is a dependency if you want to use 'Third Eye Support"**
     **Info On How To Use Third Eye Support Will Be on The "How To Use" Section Of This README.MD**
@@ -63,6 +65,6 @@
 
 # How To Use:
 
-**1: Enable Third Eye Support**
+**1: Open The config.lua
 
 **To Enable Third Eye Support Go Into The config.lua And Set "Config.ToggleThirdEye = false" To "Config.ToggleThirdEye = true"**
