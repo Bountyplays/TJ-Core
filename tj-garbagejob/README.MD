@@ -1,11 +1,5 @@
 # Made By: TJ Developments (TKiljoy & KingJamesTheDev)*
 
-
-# THANK YOU!
-**Thanks For Downloading Our Script! This Script Is A ReCoded Version Of The QBCore Garbage Job With Extended Features.**
-**Please Read Below This Message To See Instructions And Guidlines To Our Resources.**
-
-
 # GuidLines:
 **You May NOT Repost This Script On ANY platform Without Our Written Consent To Do So.**
 **You May NOT Take This Script And Say The Contents Are Yours And You Made It.**
@@ -27,6 +21,7 @@
 
 **1:  Before Starting tj-garbagejob You Must Add The Job First, To Do So Go Into [qb]/qb-core/shared/jobs.lua**
     **And Paste The Following**
+```lua
     ['garbageman'] = {
 		label = 'GarbageMan',
 		defaultDuty = false,
@@ -38,9 +33,9 @@
             },
         },
 	},
-
+```
 **2: For tj-garbagejob to work you must also add this to your [qb]/qb-radialmenu/config.lua under Config.JobInteractions**
-    ```lua
+```lua
     ["garbageman"] = {
         {
             id = 'startroute',
@@ -51,7 +46,7 @@
             shouldClose = true
         }
     },
-    ```
+```
 
 **3: Install qb-target as this is a dependency if you want to use 'Third Eye Support"**
     **Info On How To Use Third Eye Support Will Be on The "How To Use" Section Of This README.MD**
@@ -65,6 +60,15 @@
 
 # How To Use:
 
-**1: Open The config.lua
+**Everything Is Done Within The Config.lua, DO NOT Edit The Files Other Then The Config If You Don't Know What Your Are Doing. We Are Not Responsible If Something Breaks When You Do This.**
 
-**To Enable Third Eye Support Go Into The config.lua And Set "Config.ToggleThirdEye = false" To "Config.ToggleThirdEye = true"**
+
+# Custom Work
+
+**Want Custom Work From Us? Join Our Discord And Make A Ticket On What You Want And Pricing Will Be Discust Once An Agreement Is Made.**
+
+# THANK YOU!
+**Thanks For Downloading Our Script! This Script Is A ReCoded Version Of The QBCore Garbage Job With Extended Features.**
+**Please Make Sure To Join Our Discord To Know When We Add More Resources To The CFX Community!** 
+
+# **Discord:** https://discord.gg/P62dDZmqMY
